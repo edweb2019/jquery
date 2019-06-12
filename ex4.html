@@ -1,0 +1,72 @@
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+
+//TODO 1) : au chargement de la page, 
+// Ajouter les boutons + en haut et en bas 
+// associés à un champ de saisie 
+// Chaque bouton + doit permettre l'insertion 
+// d'un nouveau paragraphe ayant pour contenu 
+// celui du champ à côté de lui 
+
+// BONUS: une seule fonction gestionnaire d'événement click
+// pour les DEUX boutons 
+
+var jP = $("<p>")
+			.html("Nouveau P"); 
+
+var jBtnPlus = $('<input type="button">')
+	.val("+")
+	.click(function(){
+		// $(this) dénotera le bouton effectif cliqué
+		console.log("bouton + " 
+					+ $(this).parent().data("pos"));
+
+		// $(this).parent() <=> <div commun>
+		// $(this).next() => frère suivant
+  
+		// Quel est le contenu du champ texte ? 
+		console.log("texte = " 
+					+ $(this).next().val());
+
+		var jPClone = jP.clone(); 
+		var contenu = $(this).next().val(); 
+		if (contenu != "") jPClone.html(contenu);
+		//$(this).next().val(""); // on vide
+
+		if ($(this).parent().data("pos") == "top") {
+			$("#contenu").prepend(jPClone);
+		} else {
+			$("#contenu").append(jPClone);
+		}
+		
+
+		// NB : .parents() existe 
+		// NB : .data() peut récupérer les attributs HTML5 data-* 		
+	}); 
+
+var jT = $('<input type="text"/>')
+			.click(function(){
+		$(this).select();	
+	}); 
+
+var jComposant = $("<div>")
+					.append(jBtnPlus)
+					.append(jT); 
+
+$(document).ready(function(){ // au chargement...
+
+	$("body").prepend(jComposant.clone(true).data("pos","top"));
+	$("body").append(jComposant.clone(true).data("pos","bottom"));
+
+}); // fin ready
+
+</script>
+
+<body>
+
+<div id="contenu">
+<p>P1</p><p>P2</p><p>P3</p><p>P4</p>
+</div>
+
+</body>
+
