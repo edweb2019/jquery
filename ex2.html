@@ -1,0 +1,34 @@
+<script src="jquery-3.4.1.min.js"></script>
+<style>
+#contenu{display:none;}
+</style>
+<script>
+function toggle() {
+	$("#contenu").toggle();
+	// COmment vérifier qu'un sélecteur jquery renvoie un élément ?
+	// cf google : propriété length 
+	if ($("input[value='Afficher']").length) {
+		$("input[value='Afficher']").val("Cacher");
+	} else {
+		$("input[value='Cacher']").val("Afficher");
+	}
+}
+</script>
+
+<body>
+<input type="button" value="Afficher" onclick="toggle();"/>
+<div id="contenu">
+<p>P1</p><p>P2</p><p>P3</p><p>P4</p>
+</div>
+
+</body>
+
+<!-- V1 : Modifier le label et le comportement du bouton pour qu'il permette de cacher/afficher les éléments contenus dans une balise <div> d’identifiant « contenu». 
+
+Créer plusieurs boutons synchronisés entre eux pour cacher/afficher
+◦ Le premier en haut, l'autre en bas
+
+Insérer des boutons permettant d'ajouter de nouveaux paragraphes à la page, placés avant ou après les paragraphes existants à l’’intérieur du « contenu ».
+◦ Ces boutons ne doivent apparaître que lorsque les paragraphes sont affichés
+◦ Développer deux versions, selon que les paragraphes à saisir soient placés dans une balise div qui les contient tous ou directement entre les boutons
+-->
