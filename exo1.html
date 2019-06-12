@@ -1,0 +1,25 @@
+<script src="jquery-3.4.1.min.js">
+// Mieux : utiliser un CDN 
+// Cf. https://jquery.com/download/
+</script>
+
+<style>
+.allume {background-color:yellow;}
+.exemple {display:none;}
+</style>
+
+<script>
+function decollage(){
+	$("p.exemple").addClass("allume").show("slow");
+}
+</script>
+
+<body>
+<input type="button" onclick="decollage();"  value="OK"/>
+<p class="exemple"> Un paragraphe </p>
+<p> Un paragraphe </p>
+<p class="exemple"> Un paragraphe </p>
+<div class="exemple"> Un div </div>
+<div class="exemple"> Un div </div>
+<div> Un div </div>
+</body>
