@@ -15,8 +15,13 @@ $(document).ready(function(){ // au chargement...
 	// Définir le comportement des boutons "Cacher/Afficher"
 	$("input[value='Cacher']").click(function(){
 		// au clic...
+		// Dans ce gestionnaire d'événement "click"
+		// Sur un bouton Cacher/Afficher 
+		// $(this) dénote une référence JQuery vers le bouton 
+		// qui vient d'être cliqué 
+		
 		$("#contenu").toggle();
-		if ($("input[value='Afficher']").length) { // Afficher  
+		if ($(this).val() == "Afficher") {
 			$("input[value='Afficher']").val("Cacher"); 
 			$("input[value='+']").show(); 		
 		} else { // Cacher 
