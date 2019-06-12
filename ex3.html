@@ -1,0 +1,57 @@
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+
+//TODO: au chargement de la page, 
+// affecter les comportements aux boutons 
+// de manière programmatique 
+
+//TODO: Utiliser des fonctions anonymes
+// Chargement <=>  $(document).ready(callback)
+
+var jP = $("<p>").html("Nouveau P");
+
+$(document).ready(function(){ // au chargement...
+
+	// Définir le comportement des boutons "Cacher/Afficher"
+	$("input[value='Cacher']").click(function(){
+		// au clic...
+		$("#contenu").toggle();
+		if ($("input[value='Afficher']").length) { // Afficher  
+			$("input[value='Afficher']").val("Cacher"); 
+			$("input[value='+']").show(); 		
+		} else { // Cacher 
+			$("input[value='Cacher']").val("Afficher");
+			$("input[value='+']").hide();		
+		}
+	}); // fin click (cacher/afficher)
+
+	//TODO: affecter un comportement différent sur les boutons "+"
+	/*
+	$("input[value='+']").first().css("background-color","yellow");
+	$("input[value='+']").last().css("background-color","red");
+	$("input[value='+']:first").css("background-color","green");
+	$("input[value='+']:last").css("background-color","blue");
+	*/
+
+	$("input[value='+']:first").click(function(){
+		$("#contenu").prepend(jP.clone());
+	});
+
+	$("input[value='+']:last").click(function(){
+		$("#contenu").append(jP.clone());
+	});
+
+}); // fin ready
+
+</script>
+
+<body>
+<input type="button" value="+" />
+<input type="button" value="Cacher" />
+<div id="contenu">
+<p>P1</p><p>P2</p><p>P3</p><p>P4</p>
+</div>
+<input type="button" value="Cacher" />
+<input type="button" value="+" />
+</body>
+
