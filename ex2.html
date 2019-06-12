@@ -1,30 +1,36 @@
 <script src="jquery-3.4.1.min.js"></script>
-<style>
-#contenu {display:none;}
-/* V2 : #contenu {display:none;} */
-</style>
 <script>
 function toggle() {
 	$("#contenu").toggle();
 	// COmment vérifier qu'un sélecteur jquery renvoie un élément ?
 	// cf google : propriété length 
-	if ($("input[value='Afficher']").length) {
-		$("input[value='Afficher']").val("Cacher");
-		//V2: $("#contenu *").show("slow");
-	} else {
+	if ($("input[value='Afficher']").length) { // Afficher  
+		$("input[value='Afficher']").val("Cacher"); 
+		$("input[value='+']").show(); 		
+	} else { // Cacher 
 		$("input[value='Cacher']").val("Afficher");
-		//V2 : $("#contenu *").hide();
+		$("input[value='+']").hide();		
 	}
+}
+
+function addH() {
+	// Ajoute en haut 
+	$("#contenu").prepend("<p>Nouveau</p>");
+}
+function addB() {
+	// Ajoute en bas 
+	$("#contenu").append("<p>Nouveau</p>");
 }
 </script>
 
 <body>
-<input type="button" value="Afficher" onclick="toggle();"/>
+<input type="button" value="+" onclick="addH();"/>
+<input type="button" value="Cacher" onclick="toggle();"/>
 <div id="contenu">
 <p>P1</p><p>P2</p><p>P3</p><p>P4</p>
 </div>
-<input type="button" value="Afficher" onclick="toggle();"/>
-
+<input type="button" value="Cacher" onclick="toggle();"/>
+<input type="button" value="+" onclick="addB();"/>
 </body>
 
 <!-- V1 : Modifier le label et le comportement du bouton pour qu'il permette de cacher/afficher les éléments contenus dans une balise <div> d’identifiant « contenu». 
