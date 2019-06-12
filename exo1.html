@@ -10,7 +10,23 @@
 
 <script>
 function decollage(){
-	$("p.exemple").addClass("allume").show("slow");
+	$("input+p")
+		.addClass("allume")
+		.show("slow");
+
+/*
+	$ === jQuery
+	$(selecteur, [contexte])
+		renvoie un objet JQUERY représentant 
+		un ensemble d'éléments de la page 
+	Les méthodes de l'objet JQUERY renvoyé s'appliqueront 
+	généralement à la totalité des éléments capturés 
+	Les méthodes de l'objet JQUERY renvoient
+	généralement l'objet initial
+
+	ATTENTION à la performance des sélecteurs employés !
+	
+*/
 }
 </script>
 
@@ -23,3 +39,9 @@ function decollage(){
 <div class="exemple"> Un div </div>
 <div> Un div </div>
 </body>
+
+
+
+
+
+
