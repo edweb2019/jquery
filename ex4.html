@@ -3,11 +3,17 @@
 #contenu {padding:5px;}
 #contenu p:hover {
 	cursor:pointer;
-	padding:3px;
 	border: 1px dashed black;
 }
 #contenu p {
 	padding:3px;
+}
+#contenu textarea {
+	display:block;
+	width:100%;
+	padding:3px;
+	margin : 3px 0;
+	resize:none;
 }
 </style>
 <script>
@@ -80,10 +86,26 @@ $(document).ready(function(){ // au chargement...
 		// $(this) dénote le P cliqué !
 		console.log("clic sur "  + $(this).html());
 
+		var contenu = $(this).html(); 
 		// TODO: On remplace ce <p> par un textarea
+		var jTaClone = jTa.clone(true).val(contenu); 
+		$(this).replaceWith(jTaClone);
+		jTaClone.focus(); 
 	});
 
 }); // fin ready
+
+var jTa = $("<textarea>")
+			.click(function(){$(this).select();})
+			.keydown(function(contexte){
+		console.log(contexte);	
+		if (contexte.key == "Enter") {
+			// TODO: remplacer ce <textarea> par un <p>	
+			var contenu = $(this).val();
+			$(this).replaceWith(jP.clone(true).html(contenu));
+		}
+	}); 
+			
 
 </script>
 
