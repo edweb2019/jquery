@@ -1,4 +1,15 @@
 <script src="jquery-3.4.1.min.js"></script>
+<style>
+#contenu {padding:5px;}
+#contenu p:hover {
+	cursor:pointer;
+	padding:3px;
+	border: 1px dashed black;
+}
+#contenu p {
+	padding:3px;
+}
+</style>
 <script>
 
 //TODO 1) : au chargement de la page, 
@@ -10,6 +21,12 @@
 
 // BONUS: une seule fonction gestionnaire d'événement click
 // pour les DEUX boutons 
+
+//TODO 2) : permettre l'édition des paragraphes
+// Lors du survol : on change la forme du pointeur de souris
+// Lors du clic : on passe en mode "édition" en remplaçant le champ d'entrée texte par un champ de formulaire 
+// Appui sur entrée : valide la saisie
+// Appui sur ESC : annule la saisie et restaure le(s) paragraphe(s)
 
 var jP = $("<p>")
 			.html("Nouveau P"); 
@@ -39,7 +56,6 @@ var jBtnPlus = $('<input type="button">')
 			$("#contenu").append(jPClone);
 		}
 		
-
 		// NB : .parents() existe 
 		// NB : .data() peut récupérer les attributs HTML5 data-* 		
 	}); 
@@ -55,8 +71,17 @@ var jComposant = $("<div>")
 
 $(document).ready(function(){ // au chargement...
 
+	// ajout des composants btn +
 	$("body").prepend(jComposant.clone(true).data("pos","top"));
 	$("body").append(jComposant.clone(true).data("pos","bottom"));
+
+	// réaction des P (présents ET futurs) au clic 
+	$(document).on("click","#contenu p", function(){
+		// $(this) dénote le P cliqué !
+		console.log("clic sur "  + $(this).html());
+
+		// TODO: On remplace ce <p> par un textarea
+	});
 
 }); // fin ready
 
