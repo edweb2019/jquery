@@ -13,13 +13,20 @@ function toggle() {
 	}
 }
 
+var jP = $("<p>")
+			.html("Nouveau");
+
+jP.html("autre");
+
 function addH() {
 	// Ajoute en haut 
-	$("#contenu").prepend("<p>Nouveau</p>");
+	//$("#contenu").prepend("<p>Nouveau</p>");
+	$("#contenu").prepend(jP.clone());
 }
 function addB() {
 	// Ajoute en bas 
-	$("#contenu").append("<p>Nouveau</p>");
+	//$("#contenu").append("<p>Nouveau</p>");
+	$("#contenu").append(jP.clone());
 }
 </script>
 
